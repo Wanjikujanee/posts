@@ -15,6 +15,12 @@
             android:name=".commentRvAdapter"
             android:exported="false" />
         <activity
+            android:name=".commentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".myposts"
+            android:exported="false" />
+        <activity
             android:name=".postRvAdapter"
             android:exported="false" />
         <activity

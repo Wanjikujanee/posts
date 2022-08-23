@@ -6,7 +6,7 @@ import retrofit2.create
 
 object ApiClient {
     var retrofit=Retrofit.Builder()
-        .baseUrl("https://jsonplaceholder.typicode.com")
+        .baseUrl("https://jsonplace.tholder.typicode.com")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 

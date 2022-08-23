@@ -1,44 +1,51 @@
 package dev.jane.myposts
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import dev.jane.myposts.databinding.ActivityViewPostBinding
+import dev.jane.myposts.databinding.ActivityMainBinding.inflate
+import dev.jane.myposts.databinding.ActivityViewPostBinding.bind
+import dev.jane.myposts.databinding.ActivityViewPostBinding.inflate
 
-//class postRvAdapter {
-//}
+
+class PostRvAdapter(var context: Context, var postList: List<Post>): RecyclerView.Adapter<RetrofitViewHolder>() {
 
 
-class postRvAdapter(var post:List<Post>):
-    RecyclerView.Adapter<postViewHolder>(){
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): postViewHolder {
-        var itemView= LayoutInflater.from(parent.context)
-            .inflate(R.layout.activity_view_post,parent,false)
-        return postViewHolder(itemView)
+    override fun onBindViewHolder(holder: RetrofitViewHolder, position: Int) {
+        var currentItem = postList.get(position)
+        with(holder.bindingView) {
+            tvId.text = currentItem.id.toString()
+            tvUserId.text = currentItem.userId.toString()
+            tvTitle.text = currentItem.title
+            tvBody.text = currentItem.body
+            val context=holder.itemView.context
+            holder.bindingView.cvCard.setOnClickListener {
+                val intent = Intent(holder.itemView.context, commentActivity::class.java)
+                intent.putExtra("POST_ID", currentItem.id)
+                context.startActivity(intent)
+            }
+        }
+
+        }
+        override fun getItemCount(): Int {
+            return postList.size
+        }
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RetrofitViewHolder {
+            var binding =
+                ActivityViewPostBinding.inflate(LayoutInflater.from(context), parent, false)
+            return RetrofitViewHolder(binding)
+        }
     }
 
-    override fun onBindViewHolder(holder: postViewHolder, position: Int) {
-        var currentPost=post.get(position)
-        holder.tvUserId.Int=currentPost.userId
-        holder.tvId.Int=currentPost.id
-        holder.tvTitle.text=currentPost.title
-        holder.tvBody.text=currentPost.body
 
-
+    class RetrofitViewHolder(var bindingView: ActivityViewPostBinding) :
+        RecyclerView.ViewHolder(bindingView.root) {
 
     }
-
-    override fun getItemCount(): Int {
-        return post.size
-    }
-}
-class postViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-    var tvUserId=itemView.findViewById<TextView>(R.id.tvUserId)
-    var tvId=itemView.findViewById<TextView>(R.id.tvId)
-    var tvBody=itemView.findViewById<TextView>(R.id.tvBody)
-    var tvTitle=itemView.findViewById<TextView>(R.id.tvTitle)
-
-
-}
 

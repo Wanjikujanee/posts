@@ -5,7 +5,9 @@
       <map>
         <entry key="app/src/main/res/layout/activity_comment_list_item.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/activity_comment_rv_adapter.xml" value="0.17864583333333334" />
+        <entry key="app/src/main/res/layout/activity_comments.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19375" />
+        <entry key="app/src/main/res/layout/activity_myposts.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/activity_post_rv_adapter.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/activity_view_comment.xml" value="0.17864583333333334" />
         <entry key="app/src/main/res/layout/activity_view_post.xml" value="0.19375" />

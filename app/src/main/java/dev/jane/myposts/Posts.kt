@@ -1,7 +1,5 @@
 package dev.jane.myposts
 
-
-
 data class Post(
     var userId:Int,
     var id:Int,
@@ -14,6 +12,7 @@ data class Post(
     var id: Int,
     var name:String,
     var body:String)
+
 
 
 
